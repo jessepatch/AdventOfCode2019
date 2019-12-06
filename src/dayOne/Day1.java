@@ -11,7 +11,7 @@ public class Day1 {
 
 	public static void main(String[] args) {
 		ArrayList<Integer> modulesMasses = parseInput();
-		System.out.println(findTotalFuel(modulesMasses));
+		System.out.println(findTotalFuel(modulesMasses, 0));
 	}
 	
 	public static ArrayList<Integer> parseInput() {
@@ -37,13 +37,22 @@ public class Day1 {
 
 	}
 	
-	public static int findTotalFuel(ArrayList<Integer> modulesMasses) {
+	public static int findTotalFuel(ArrayList<Integer> modulesMasses, int previousTotalMass) {
 		
 		int totalFuel = 0;
+		ArrayList<Integer> newFuelMasses = new ArrayList<Integer>();
 
 		for(int x = 0; x < modulesMasses.size(); x++) {
+			if(findMassRequired(modulesMasses.get(x)) > 0) {
+				newFuelMasses.add(findMassRequired(modulesMasses.get(x)));
+			}
 			totalFuel = totalFuel +	findMassRequired(modulesMasses.get(x));
-
+		}
+		totalFuel = totalFuel + previousTotalMass;
+		System.out.println(newFuelMasses.size());
+		System.out.println(totalFuel);
+		if(newFuelMasses.size() > 0) {
+			findTotalFuel(newFuelMasses, totalFuel);
 		}
 		return totalFuel;
 	}
@@ -53,7 +62,7 @@ public class Day1 {
 		int z = y - 2;
 		
 		if(z < 0) {
-			
+			return 0;
 		}
 		return z;
 	}
