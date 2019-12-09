@@ -10,18 +10,26 @@ public class Day2 {
        static String fileName = "C:\\Users\\P2869731\\Documents\\AOC\\inputDay2.txt";
 
        public static void main(String[] args) {
-
-              ArrayList<Integer> program = parseInput();
-         
-              program.set(1, 12);
-              program.set(2, 2);
-             
-              ArrayList<Integer> result = runProgram(program);
-              System.out.println("Position 0 = " + result.get(0));
-             
-              for(int x = 0; x < result.size(); x++) {
-                     System.out.println(result.get(x));
-              }
+    	   
+    	   int outputTarget = 19690720;
+    	   int noun = 0;
+    	   int verb = 0;
+    	   for(int x = 0; x < 100; x++) {
+    		   for(int y = 0; y < 100; y++) {
+    			   ArrayList<Integer> program = parseInput();
+    		         
+    	              program.set(1, x);
+    	              program.set(2, y);
+    	             
+    	              ArrayList<Integer> result = runProgram(program);
+    	              System.out.println("Position 0 = " + result.get(0));
+    	              if(result.get(0) == outputTarget) {
+    	            	  noun = x;
+    	            	  verb = y;
+    	            	  System.out.println(100 * noun + verb);
+    	              }
+    		   }
+           }
        }
       
        public static ArrayList<Integer> parseInput() {
@@ -41,6 +49,7 @@ public class Day2 {
                            intCodeProgram.add(Integer.parseInt(programParts[x]));
                      }
               }
+              scanner.close();
               return intCodeProgram;
        }
       
