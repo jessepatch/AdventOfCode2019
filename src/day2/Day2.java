@@ -7,7 +7,7 @@ import java.util.Scanner;
  
 public class Day2 {
 
-       static String fileName = "C:\\Users\\P2869731\\Documents\\AOC\\inputDay2.txt";
+       static String fileName = "D:\\Windows\\Documents\\AdventOfCode2019\\day2input.txt";
 
        public static void main(String[] args) {
     	   
@@ -22,7 +22,7 @@ public class Day2 {
     	              program.set(2, y);
     	             
     	              ArrayList<Integer> result = runProgram(program);
-    	              System.out.println("Position 0 = " + result.get(0));
+    	              //System.out.println("Position 0 = " + result.get(0));
     	              if(result.get(0) == outputTarget) {
     	            	  noun = x;
     	            	  verb = y;
